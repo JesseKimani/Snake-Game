@@ -5,12 +5,14 @@ UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
+
+
 class Snake:
+
     def __init__(self):
         self.segments = []
         self.create_snake()
         self.head = self.segments[0]
-
 
     def create_snake(self):
         for position in STARTING_POSITIONS:
@@ -49,6 +51,13 @@ class Snake:
     def down(self):
         if self.head.heading() != UP:
             self.segments[0].setheading(DOWN)
+
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000, 1000)
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
 
 
 
